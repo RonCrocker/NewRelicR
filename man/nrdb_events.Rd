@@ -4,15 +4,28 @@
 \alias{nrdb_events}
 \title{Retrieve a contiguous chunk of raw events.}
 \usage{
-nrdb_events(account_id, api_key, app_id = NULL, attrs = "*", where = NULL,
-  start_time = Sys.time() - lubridate::dminutes(60), end_time = Sys.time(),
-  limit = 1000, event_type = "Transaction", verbose = F, timeout = 1000,
-  sampling_rate = NULL)
+nrdb_events(
+  account_id,
+  api_key,
+  host = "insights-api.newrelic.com",
+  app_id = NULL,
+  attrs = "*",
+  where = NULL,
+  start_time = Sys.time() - lubridate::dminutes(60),
+  end_time = Sys.time(),
+  limit = 1000,
+  event_type = "Transaction",
+  verbose = F,
+  timeout = 1000,
+  sampling_rate = NULL
+)
 }
 \arguments{
 \item{account_id}{your New Relic account ID}
 
 \item{api_key}{your New Relic NRDB (Insights) API key}
+
+\item{host}{host to use for querying; defaults to 'insights-api.newrelic.com'}
 
 \item{app_id}{the application with the transactions, required unless a where clause is provided}
 

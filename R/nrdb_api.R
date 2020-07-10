@@ -5,6 +5,7 @@
 #'
 #' @param account_id your New Relic account ID
 #' @param api_key your New Relic NRDB (Insights) API key
+#' @param host host to use for query (default: insights-api.newrelic.com)
 #' @param nrql_query the NRQL query to execute
 #' @param verbose indicates status information to be printed out
 #' @param timeout the max time in milliseconds to wait for a response (default: 10,000)
@@ -18,12 +19,14 @@
 #' @examples
 #'     nrdb_query(account_id=-1, api_key='your_nrdb_api_license_key_here',
 #'               nrql_query="SELECT count(*) from PageAction facet name")
-nrdb_query <- function(account_id, api_key, nrql_query, verbose=F,
+nrdb_query <- function(account_id, api_key,
+                       host="insights-api.newrelic.com",
+                       nrql_query, verbose=F,
                        timeout=10000) {
 
     if (verbose) message(paste("Query:", nrql_query))
     if (account_id > 0) {
-        url <- paste("https://insights-api.newrelic.com/v1/accounts/",
+        url <- paste("https://", host, "/v1/accounts/",
                      account_id, "/query", sep = '')
     } else {
         url <- 'http://mockbin.org/bin/1a422903-e564-4da6-9258-72e1d3213151'
@@ -69,6 +72,7 @@ nrdb_query <- function(account_id, api_key, nrql_query, verbose=F,
 #'
 #' @param account_id your New Relic account ID
 #' @param api_key your New Relic NRDB (Insights) API key
+#' @param host host to use for querying; defaults to 'insights-api.newrelic.com'
 #' @param app_id the application id; you can find the id for your application in the RPM application
 #' by using the ID in the URL when viewing the application.
 #' @param from number of hours into the past to begin the hunt for sessions
@@ -86,6 +90,7 @@ nrdb_query <- function(account_id, api_key, nrql_query, verbose=F,
 #'
 nrdb_session_ids <- function(account_id,
                              api_key,
+                             host='insights-api.newrelic.com',
                              app_id,
                              from=48,
                              to=1,
@@ -130,6 +135,7 @@ nrdb_session_ids <- function(account_id,
 #'
 #' @param account_id your New Relic account ID
 #' @param api_key your New Relic NRDB (Insights) API key
+#' @param host host to use for querying; defaults to 'insights-api.newrelic.com'
 #' @param session_ids the list of session ids obtained using \code{\link{nrdb_session_ids}}
 #' @param app_id the id of the app to focus on
 #' @param limit the limit on the number of PageViews in a session to this number; if there are
@@ -144,6 +150,7 @@ nrdb_session_ids <- function(account_id,
 #'
 nrdb_sessions <- function(account_id,
                           api_key,
+                          host='insights-api.newrelic.com',
                           session_ids,
                           app_id=NULL,
                           limit=NULL,
@@ -174,6 +181,7 @@ nrdb_sessions <- function(account_id,
 #'
 #' @param account_id your New Relic account ID
 #' @param api_key your New Relic NRDB (Insights) API key
+#' @param host host to use for querying; defaults to 'insights-api.newrelic.com'
 #' @param app_id the application with the transactions
 #' @param limit to limit the number of transactions returned
 #' @param event_type the event table to use, either \code{PageView} or (default) \code{Transaction}
@@ -183,6 +191,7 @@ nrdb_sessions <- function(account_id,
 #' @export
 nrdb_top_transactions <- function(account_id,
                                   api_key,
+                                  host='insights-api.newrelic.com',
                                   app_id,
                                   limit=10,
                                   event_type='Transaction',
@@ -203,6 +212,7 @@ nrdb_top_transactions <- function(account_id,
 #'
 #' @param account_id your New Relic account ID
 #' @param api_key your New Relic NRDB (Insights) API key
+#' @param host host to use for querying; defaults to 'insights-api.newrelic.com'
 #' @param app_id the application with the transactions, required unless a where clause is provided
 #' @param attrs an optional array of attributes to fetch; default is everything (*)
 #' @param where a clause to use to qualify the events fetched; must specify either app_id or where
@@ -219,6 +229,7 @@ nrdb_top_transactions <- function(account_id,
 #'
 nrdb_events <- function(account_id,
                         api_key,
+                        host='insights-api.newrelic.com',
                         app_id=NULL,
                         attrs='*',
                         where=NULL,
@@ -351,6 +362,7 @@ nrql.timestamp <- function(ts) {
 
 process_session <- function(account_id,
                             api_key,
+                            host='insights-api.newrelic.com',
                             session_id,
                             limit,
                             event_type,

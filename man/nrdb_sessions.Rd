@@ -4,13 +4,24 @@
 \alias{nrdb_sessions}
 \title{Get the user interactions for a list of session Ids, including Page Views and Page Actions.}
 \usage{
-nrdb_sessions(account_id, api_key, session_ids, app_id = NULL, limit = NULL,
-  from = 24 * 3, event_type = "PageView", verbose = F)
+nrdb_sessions(
+  account_id,
+  api_key,
+  host = "insights-api.newrelic.com",
+  session_ids,
+  app_id = NULL,
+  limit = NULL,
+  from = 24 * 3,
+  event_type = "PageView",
+  verbose = F
+)
 }
 \arguments{
 \item{account_id}{your New Relic account ID}
 
 \item{api_key}{your New Relic NRDB (Insights) API key}
+
+\item{host}{host to use for querying; defaults to 'insights-api.newrelic.com'}
 
 \item{session_ids}{the list of session ids obtained using \code{\link{nrdb_session_ids}}}
 

@@ -13,7 +13,7 @@ License: file LICENSE
 LazyData: TRUE
 URL: https://github.com/bkayser/NewRelicR
 BugReports: https://github.com/bkayser/NewRelicR/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.1
 Imports:
     plyr,
     dplyr,

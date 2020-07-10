@@ -4,14 +4,27 @@
 \alias{nrdb_session_ids}
 \title{Get User Session IDs.}
 \usage{
-nrdb_session_ids(account_id, api_key, app_id, from = 48, to = 1,
-  size = 50, min_length = 10, max_length = NULL, min_unique = 1,
-  event_type = "PageView", verbose = T)
+nrdb_session_ids(
+  account_id,
+  api_key,
+  host = "insights-api.newrelic.com",
+  app_id,
+  from = 48,
+  to = 1,
+  size = 50,
+  min_length = 10,
+  max_length = NULL,
+  min_unique = 1,
+  event_type = "PageView",
+  verbose = T
+)
 }
 \arguments{
 \item{account_id}{your New Relic account ID}
 
 \item{api_key}{your New Relic NRDB (Insights) API key}
+
+\item{host}{host to use for querying; defaults to 'insights-api.newrelic.com'}
 
 \item{app_id}{the application id; you can find the id for your application in the RPM application
 by using the ID in the URL when viewing the application.}

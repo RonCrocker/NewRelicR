@@ -4,12 +4,21 @@
 \alias{nrdb_query}
 \title{Execute NRQL queries on NRDB (Insights).}
 \usage{
-nrdb_query(account_id, api_key, nrql_query, verbose = F, timeout = 10000)
+nrdb_query(
+  account_id,
+  api_key,
+  host = "insights-api.newrelic.com",
+  nrql_query,
+  verbose = F,
+  timeout = 10000
+)
 }
 \arguments{
 \item{account_id}{your New Relic account ID}
 
 \item{api_key}{your New Relic NRDB (Insights) API key}
+
+\item{host}{host to use for query (default: insights-api.newrelic.com)}
 
 \item{nrql_query}{the NRQL query to execute}
 

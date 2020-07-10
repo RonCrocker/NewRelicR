@@ -4,13 +4,22 @@
 \alias{nrdb_top_transactions}
 \title{Get the top transactions.}
 \usage{
-nrdb_top_transactions(account_id, api_key, app_id, limit = 10,
-  event_type = "Transaction", end_time)
+nrdb_top_transactions(
+  account_id,
+  api_key,
+  host = "insights-api.newrelic.com",
+  app_id,
+  limit = 10,
+  event_type = "Transaction",
+  end_time
+)
 }
 \arguments{
 \item{account_id}{your New Relic account ID}
 
 \item{api_key}{your New Relic NRDB (Insights) API key}
+
+\item{host}{host to use for querying; defaults to 'insights-api.newrelic.com'}
 
 \item{app_id}{the application with the transactions}
 

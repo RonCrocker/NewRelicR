@@ -4,10 +4,21 @@
 \alias{rpm_query}
 \title{Query New Relic Application Metricdata.}
 \usage{
-rpm_query(account_id, api_key, app_id, duration = 60 * 60,
-  end_time = Sys.time(), period = NULL, metrics = "HttpDispatcher",
-  verbose = F, values = "average_response_time", cache = T,
-  host = "api.newrelic.com", progress_callback = NULL, ...)
+rpm_query(
+  account_id,
+  api_key,
+  app_id,
+  duration = 60 * 60,
+  end_time = Sys.time(),
+  period = NULL,
+  metrics = "HttpDispatcher",
+  verbose = F,
+  values = "average_response_time",
+  cache = T,
+  host = "api.newrelic.com",
+  progress_callback = NULL,
+  ...
+)
 }
 \arguments{
 \item{account_id}{your New Relic account ID}

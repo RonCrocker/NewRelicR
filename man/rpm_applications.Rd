@@ -4,8 +4,7 @@
 \alias{rpm_applications}
 \title{Query for New Relic Applications.}
 \usage{
-rpm_applications(account_id, api_key, host = "api.newrelic.com",
-  verbose = F)
+rpm_applications(account_id, api_key, host = "api.newrelic.com", verbose = F)
 }
 \arguments{
 \item{account_id}{your New Relic account ID}
